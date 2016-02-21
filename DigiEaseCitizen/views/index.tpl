@@ -77,7 +77,7 @@
   <header>
     <h1 class="logo">Welcome to Citizen services</h1>
     <div class="description">
-      This is just a sample page. You need to send an HTTP request to call th services.
+      This is just a sample page. You need to send an HTTP request to call the services.
     </div>
   </header>
   <div class="backdrop"></div>
