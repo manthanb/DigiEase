@@ -15,4 +15,6 @@ The control flow of the application is as follows:
      which calculates and maintains data.
   3. The processed data is sent back to controller which formats it in JSON and sends back on the route.
   
+If you want to see the data and the processing part, direclty jump to models.
+
 You can contact me anytime for any queries
