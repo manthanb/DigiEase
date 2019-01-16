@@ -7,3 +7,5 @@ import (
 type MainController struct {
 	beego.Controller
 }
+
+

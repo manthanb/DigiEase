@@ -12,14 +12,16 @@ type UserLoginResponse struct {
 }
 
 type FormThumbnail struct {
-	FormType   int64  `json:"formType"`
-	FormID     int64  `json:"formID"`
-	Status     int64  `json:"status"`
-	UserID     int64  `json:"userID"`
-	FirstName  string `json:"firstName"`
-	MiddleName string `json:"middleName"`
-	LastName   string `json:"lastName"`
-	DateTime   string `json:"dateTime"`
+	ApplicationID string `json:"applicationID"`
+	UserID        int64  `json:"userID"`
+	FormID        int64  `json:"formID"`
+	FormType      int64  `json:"formType"`
+	Status        int64  `json:"status"`
+	DateTime      string `json:"dateTime"`
+	Area          int64  `json:"area"`
+	FirstName     string `json:"firstName"`
+	MiddleName    string `json:"middleName"`
+	LastName      string `json:"lastName"`
 }
 
 type FormThumbnailsRequest struct {
@@ -35,7 +37,7 @@ type OwnerData struct {
 	FirstName  string `json:"firstName"`
 	MiddleName string `json:"middleName"`
 	LastName   string `json:"lastName"`
-	Age        string `json:"age"`
+	Age        int64  `json:"age"`
 	Address1   string `json:"address1"`
 	Address2   string `json:"address2"`
 	Address3   string `json:"address3"`
@@ -60,7 +62,7 @@ type TenantData struct {
 	FirstName        string `json:"firstName"`
 	MiddleName       string `json:"middleName"`
 	LastName         string `json:"lastName"`
-	Age              string `json:"age"`
+	Age              int64  `json:"age"`
 	Address1         string `json:"address1"`
 	Address2         string `json:"address2"`
 	Address3         string `json:"address3"`
@@ -77,7 +79,7 @@ type AgentData struct {
 	FirstName  string `json:"firstName"`
 	MiddleName string `json:"middleName"`
 	LastName   string `json:"lastName"`
-	Age        string `json:"age"`
+	Age        int64  `json:"age"`
 	Address1   string `json:"address1"`
 	Address2   string `json:"address2"`
 	Address3   string `json:"address3"`
@@ -89,14 +91,34 @@ type AgentData struct {
 }
 
 type TenantFormResponse struct {
-	Owner            OwnerData    `json:"owner"`
-	Property         PropertyData `json:"property"`
-	Tenant           TenantData   `json:"tenantData"`
-	Agent            AgentData    `json:"agentData"`
-	ExceptionMessage string       `json:"exceptionMessage"`
+	Status        int64        `json:"status"`
+	Owner         OwnerData    `json:"owner"`
+	Property      PropertyData `json:"property"`
+	Tenant        TenantData   `json:"tenant"`
+	Agent         AgentData    `json:"agent"`
+	OwnerPhoto    string       `json:"ownerPhoto"`
+	AgentPhoto    string       `json:"agentPhoto"`
+	TenantPhoto   string       `json:"tenantPhoto"`
+	OwnerPhotoID  string       `json:"ownerPhotoID"`
+	TenantPhotoID string       `json:"tenantPhotoID"`
+	ErrorMessage  string       `json:"errorMessage"`
 }
 
-type TenantFormRequest struct {
-	FormID   int64 `json:"formID"`
-	FormType int64 `json:"formType"`
+type GetFormRequest struct {
+	FormID   string `json:"formID"`
+	FormType string `json:"formType"`
+}
+
+type UpdateStatusRequest struct {
+	FormID         string `json:"formID"`
+	Status         int64  `json:"status"`
+	Discard        string `json:"discard"`
+	Comment        string `json:"comment"`
+	AreaCode       string `json:"areaCode"`
+	AreaCodeStatus string `json:"areaCodeStatus"`
+}
+
+type UpdateStatusResponse struct {
+	Status           string `json:"status"`
+	ExceptionMessage string `json:"exceptionMessage"`
 }

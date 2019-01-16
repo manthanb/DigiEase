@@ -2,6 +2,7 @@ package controllers
 
 import "DigiEasePolice/models"
 import "encoding/json"
+import _ "github.com/go-sql-driver/mysql"
 
 func (c *MainController) DEPFormThumbnails() {
 
@@ -20,7 +21,6 @@ func (c *MainController) DEPFormThumbnails() {
 	c.Ctx.Output.Header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With")
 
 	c.Data["json"] = objFormThumbnailsResponse
-
 	c.ServeJson()
 
 }

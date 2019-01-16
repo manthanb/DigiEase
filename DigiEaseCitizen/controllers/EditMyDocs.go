@@ -5,22 +5,21 @@ import (
 	"encoding/json"
 )
 
-func (c *MainController) DECUserLogin() {
-	var objUserLoginRequest models.UserLoginRequest
-	var objUserLoginResponse models.UserLoginResponse
-
+func (c *MainController) EditMyDocs() {
+	var objMyDocsRequest models.MyDocsRequest
+	var objMyDocsResponse models.MyDocsResponse
 	strRequestJson := c.Ctx.Input.Query("json")
 
-	err := json.Unmarshal([]byte(strRequestJson), &objUserLoginRequest)
+	err := json.Unmarshal([]byte(strRequestJson), &objMyDocsRequest)
 
 	models.HandleError(err)
 
-	objUserLoginResponse = models.DECUserLogin(objUserLoginRequest)
+	objMyDocsResponse = models.EditMyDocs(objMyDocsRequest)
 
 	c.Ctx.Output.Header("Access-Control-Allow-Origin", "*")
 	c.Ctx.Output.Header("Access-Control-Allow-Methods", "GET, POST")
 	c.Ctx.Output.Header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With")
 
-	c.Data["json"] = objUserLoginResponse
+	c.Data["json"] = objMyDocsResponse
 	c.ServeJson()
 }

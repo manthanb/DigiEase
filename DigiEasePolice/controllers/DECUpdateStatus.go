@@ -4,23 +4,23 @@ import "DigiEasePolice/models"
 import "encoding/json"
 import _ "github.com/go-sql-driver/mysql"
 
-func (c *MainController) DEPUserLogin() {
+func (c *MainController) DEPUpdateStatus() {
 
-	var objUserLoginRequest models.UserLoginRequest
-	var objUserLoginResponse models.UserLoginResponse
+	var objUpdateStatusRequest models.UpdateStatusRequest
+	var objUpdateStatusResponse models.UpdateStatusResponse
 
 	strRequestJson := c.Ctx.Input.Query("json")
 
-	err := json.Unmarshal([]byte(strRequestJson), &objUserLoginRequest)
+	err := json.Unmarshal([]byte(strRequestJson), &objUpdateStatusRequest)
 	models.HandleError(err)
 
-	objUserLoginResponse = models.DEPUserLogin(objUserLoginRequest)
+	objUpdateStatusResponse = models.DEPUpdateStatus(objUpdateStatusRequest)
 
 	c.Ctx.Output.Header("Access-Control-Allow-Origin", "*")
 	c.Ctx.Output.Header("Access-Control-Allow-Methods", "GET, POST")
 	c.Ctx.Output.Header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With")
 
-	c.Data["json"] = objUserLoginResponse
+	c.Data["json"] = objUpdateStatusResponse
 	c.ServeJson()
 
 }
